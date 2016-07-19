@@ -6,7 +6,6 @@
   "repository": "",
   "author": "Tran Hoang Duong <tranhoangduong1994@gmail.com>",
   "dependencies": {
-    "cors": "^1.0.1",
     "express": "~3.2.4"
   }
 }
