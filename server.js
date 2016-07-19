@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-// var whitelist = ['http://localhost:8000', 'https://apps.facebook.com/classic-vegas-slots', 'https://hub102.com/staging/slots'];
+// var whitelist = ['http://localhost:8000', 'https://apps.facebook.com/classic-vegas-slots/', 'https://hub102.com/staging/slots/'];
 // var corsOptions = {
 //   origin: function(origin, callback){
 //     var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
