@@ -1,17 +1,26 @@
 var express = require('express');
+var cors = require("cors");
 
-var app = express();
 var PORT = process.env.PORT || 3000;
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+var app = express();
 
-app.get("/", function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:8000");
+//   res.header("Access-Control-Allow-Origin", "https://apps.facebook.com/classic-vegas-slots");
+//   res.header("Access-Control-Allow-Origin", "https://hub102.com/staging/slots");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+var whitelist = ['http://localhost:8000', 'https://apps.facebook.com/classic-vegas-slots', 'https://hub102.com/staging/slots'];
+var corsOptions = {
+  origin: function(origin, callback){
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, originIsWhitelisted);
+  }
+};
+
+app.get("/", cors(corsOptions), function(req, res) {
   res.json({
     'timestamp': new Date().getTime() / 1000
   });
